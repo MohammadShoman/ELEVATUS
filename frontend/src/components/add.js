@@ -1,5 +1,7 @@
 import React from "react";
 import { useState} from "react";
+import {BsFillPlusCircleFill} from 'react-icons/bs'
+import {AiFillMinusCircle} from 'react-icons/ai'
 import './add.css'
 const AddItem = () => {
   const [name, setName] = useState("");
@@ -27,7 +29,7 @@ const AddItem = () => {
           <div className="search-add">
         <input 
           type="text"
-          placeholder="Search.."
+          placeholder="Search item"
           onChange={(e) => {
             setSearchItem(e.target.value);
           }}
@@ -43,7 +45,8 @@ const AddItem = () => {
               setName(e.target.value);
             }}
           />
-          <button>+</button>
+          <button><BsFillPlusCircleFill type="submit" style={{ color: 'B0D6E6',marginLeft:"10"}} size={35}/></button>
+          
         </form>
         </div>
         {data &&
@@ -59,14 +62,14 @@ const AddItem = () => {
             })
             .map((elem, i) => {
               return (
-                <div key={i} style={{ display: "flex" }}>
-                  <h1>{elem}</h1>
-                  <button
+                <div className="items" key={i} >
+                  <p>{elem}</p>
+                  <button style={{ float:"right"}}
                     onClick={() => {
                       deleteItem(i);
                     }}
                   >
-                    delete
+                    <AiFillMinusCircle type="submit" style={{ color: 'FC0000',marginTop:"10"}} size={35}/>
                   </button>
                 </div>
               );
