@@ -1,13 +1,14 @@
 import React from "react";
-import { useState} from "react";
-import {BsFillPlusCircleFill} from 'react-icons/bs'
-import {AiFillMinusCircle} from 'react-icons/ai'
-import './add.css'
+import { useState } from "react";
+import { BsFillPlusCircleFill } from "react-icons/bs";
+import { AiFillMinusCircle } from "react-icons/ai";
+import "./add.css";
 const AddItem = () => {
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
   const [searchItem, setSearchItem] = useState("");
 
+  //-------------   add item   -------------
   const add = (e) => {
     e.preventDefault();
 
@@ -17,6 +18,7 @@ const AddItem = () => {
     }
   };
 
+  //-------------   delete item   -------------
   const deleteItem = (index) => {
     data.splice(index, 1);
     setData([...data]);
@@ -26,29 +28,36 @@ const AddItem = () => {
   return (
     <>
       <div>
-          <div className="search-add">
-        <input 
-          type="text"
-          placeholder="Search item"
-          onChange={(e) => {
-            setSearchItem(e.target.value);
-          }}
-        />
-        
-        <form onSubmit={add}>
+        <div className="search-add">
           <input
-          className="search"
-            name="name"
-            placeholder="add item"
-            value={name}
+            type="text"
+            placeholder="Search item"
             onChange={(e) => {
-              setName(e.target.value);
+              setSearchItem(e.target.value);
             }}
           />
-          <button><BsFillPlusCircleFill type="submit" style={{ color: 'B0D6E6',marginLeft:"10"}} size={35}/></button>
-          
-        </form>
+
+          <form onSubmit={add}>
+            <input
+              className="search"
+              name="name"
+              placeholder="add item"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+            <button>
+              <BsFillPlusCircleFill
+                type="submit"
+                style={{ color: "B0D6E6", marginLeft: "10" }}
+                size={35}
+              />
+            </button>
+          </form>
         </div>
+
+        {/* -------------   search and add   --------------*/}
         {data &&
           data
             .filter((item) => {
@@ -62,14 +71,19 @@ const AddItem = () => {
             })
             .map((elem, i) => {
               return (
-                <div className="items" key={i} >
+                <div className="items" key={i}>
                   <p>{elem}</p>
-                  <button style={{ float:"right"}}
+                  <button
+                    style={{ float: "right" }}
                     onClick={() => {
                       deleteItem(i);
                     }}
                   >
-                    <AiFillMinusCircle type="submit" style={{ color: 'FC0000',marginTop:"10"}} size={35}/>
+                    <AiFillMinusCircle
+                      type="submit"
+                      style={{ color: "FC0000", marginTop: "10" }}
+                      size={35}
+                    />
                   </button>
                 </div>
               );
