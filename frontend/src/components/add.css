@@ -1,0 +1,24 @@
+.search-add{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: 50px auto;
+    justify-content: center;
+   
+}
+.search-add input{
+    height: 35px;
+    width: 25%;
+    border: 1px solid;
+    border-radius: 5px;
+}
+.search-add form input{
+    height: 35px;
+    width: 50%;
+    margin-left: 50px;
+}
+
+.search-add form{
+    display: flex;
+    width:45%;
+}
